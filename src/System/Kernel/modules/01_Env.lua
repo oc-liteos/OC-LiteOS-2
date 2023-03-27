@@ -1,15 +1,15 @@
 
--- k.printk(k.L_INFO, "Initalizing System Services...")
+-- k.printk(k.L_INFO, "Initalizing system services...")
 k.printk(k.L_INFO, " - 01_env")
 
 
-k.service = _G.lib.loadfile("/System/Lib/Service.lua")()
-k.system = _G.lib.loadfile("/System/Lib/System.lua")()
+k.service = _G.lib.loadfile("/system/lib/service.lua")()
+k.system = _G.lib.loadfile("/system/lib/system.lua")()
 
 
 local err
 k.filesystem, err = k.service.getService("filesystem")
-_G.component = _G.lib.loadfile("/System/Kernel/components.lua")()
+_G.component = _G.lib.loadfile("/system/kernel/components.lua")()
 
 k.gpu = k.devices.gpu
 local dev = k.devices
@@ -51,7 +51,7 @@ function k.write(msg, newLine)
 end
 
 local filesystem = k.filesystem
-_G.dofile = function(path, env)
+dofile = function(path, env)
     env = env or _G
     if filesystem.isFile(path) then
         local file = filesystem.open(path, "r")

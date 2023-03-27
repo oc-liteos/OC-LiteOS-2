@@ -83,7 +83,7 @@ api.isFile = function(path)
 
     local addr, resPath = getAddrAndPath(path)
     if addr == nil then
-        -- error(path .. " " .. dump(mounts))
+        error(path .. " " .. dump(mounts))
         error(debug.traceback())
     end
     return component.invoke(addr, "exists", resPath) and not component.invoke(addr, "isDirectory", resPath)

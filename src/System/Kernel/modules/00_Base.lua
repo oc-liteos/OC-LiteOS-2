@@ -27,7 +27,7 @@ if computer.getArchitecture() ~= "Lua 5.3" then
     error("Failed to Boot: OS requires Lua 5.3")
     _G.computer.shutdown()
 end
-_G.lib.loadfile("/System/Kernel/stdlib.lua")()
+_G.lib.loadfile("/system/kernel/stdlib.lua")()
 
 function _G.k.write(msg, newLine)
     msg = msg == nil and "" or msg

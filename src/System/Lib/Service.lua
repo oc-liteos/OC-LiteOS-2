@@ -29,7 +29,7 @@ api.getService = function(sName)
     if _G.services[sName] ~= nil then
         return _G.services[sName]
     end 
-    local service, err = api.loadService("/System/Services/" .. tostring(sName) .. ".lua")
+    local service, err = api.loadService("/system/services/" .. tostring(sName) .. ".lua")
     if err then return nil, err end
     return service, nil
 end

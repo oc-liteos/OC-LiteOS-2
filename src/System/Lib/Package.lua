@@ -15,7 +15,7 @@ end
 api.loadPackage = function(pName)
     checkArg(1, pName, "string")
     if not k.devices then
-        return nil, "SystemError: Cannot find devices. The OS started may not correctly!"
+        return nil, "systemError: Cannot find devices. The OS started may not correctly!"
     end
 
     if api.packages[pName] ~= nil then
@@ -60,9 +60,9 @@ api.addLibraryPath = function(path)
     table.insert(api.searchPaths, path)
 end
 
-api.addLibraryPath("/Lib/?.lua")
-api.addLibraryPath("/Lib/?/init.lua")
-api.addLibraryPath("/Lib/?/?.lua")
+api.addLibraryPath("/lib/?.lua")
+api.addLibraryPath("/lib/?/init.lua")
+api.addLibraryPath("/lib/?/?.lua")
 
 api.require = api.loadPackage
 

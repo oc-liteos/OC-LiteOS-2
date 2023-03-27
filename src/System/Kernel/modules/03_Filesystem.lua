@@ -16,7 +16,4 @@ for addr, type in pairs(component.list("filesystem")) do
         k.devices.register("drive"..tostring(driveId), component.proxy(addr))
         driveId = driveId + 1
     end
-    --filesystem.mount(addr, "/Mount/" .. addr)
 end
-
--- k.printk(k.L_INFO, "Mouted filesystems...")

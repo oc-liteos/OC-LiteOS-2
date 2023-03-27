@@ -1,5 +1,5 @@
 local devfs = {}
-local uuid = _G.lib.loadfile("/System/Lib/uuid.lua")()
+local uuid = _G.lib.loadfile("/system/lib/uuid.lua")()
 
 devfs.create = function()
     local proxy = {}

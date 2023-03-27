@@ -1,5 +1,5 @@
 local api = {}
-local constants = require("VM/constants")
+local constants = require("vm/constants")
 
 api.createBus = function()
     local memory = {}

@@ -1,3 +1,3 @@
 return {
-    cpu = require("VM/cpu")
+    cpu = require("vm/cpu")
 }

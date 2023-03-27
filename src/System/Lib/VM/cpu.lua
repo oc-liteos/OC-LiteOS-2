@@ -5,8 +5,8 @@ local function byte(a) return bit32.band(a, 0xFF) end
 local function word(a) return bit32.band(a, 0xFFFF) end
  
 cpu.create = function()
-    -- k.write(dump(k))
-    -- threading:getCurrent():stop()
+    threading:getCurrent():stop()
+    print("test")
     coroutine.yield()
     local data = {
         pc = 0x8000,

@@ -1,4 +1,4 @@
-local event = _G.lib.loadfile("/System/Lib/Event.lua")()
+local event = _G.lib.loadfile("/system/lib/event.lua")()
 
 function _G.dump(o)
     if type(o) == 'table' then
