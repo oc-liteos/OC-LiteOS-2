@@ -1,0 +1,63 @@
+==== Instruction Format ====
+7       1
+IIII IIVV
+
+I = Instruction type
+V = Variant
+
+==== Operants ====
+
+<R> = Register
+    <R1> First Register
+<u8> = Unsinged Byte
+<s8> = Singed Byte
+<u16> = Unsinged Word (2 Byte Little endian (Least significant Byte first))
+
+==== Registers ====
+BIN     R SIZE
+0001(1) A u8
+0010(2) B u8
+0011(3) C u8
+0100(4) D u8
+
+Sytem Registers: NOT SETTED USING LOD
+1000(8) F u8 Flags Register
+        C Carry
+        Z Zero
+        G Greater
+        E Equal
+        I Interupt
+        B Break
+        O Overflow
+
+---- PC u16
+1001(9) SP u8
+
+==== Instructions ====
+0x00  0000 0000     NOP             Does nothing
+0x04  0000 0100     LOD <R, u8>     Load <u8> into <R>
+0x09  0000 0101     LOD <R, u16>    Load value at memory <u16> into <R>
+0x08  0000 1000     STO <R, u16>    Store <R> at memory <u16>
+0x0c  0000 1100     JMP <u16>       Sets PC to <u16>
+0x10  0001 0000     CMP <u8>        Compares <u8> with A
+0x14  0001 0100     BEQ <s8>        Branch if equal
+0x18  0001 1000     BNE <s8>        Not Equal
+0x19  0001 1001     BZ <s8>         Zero
+0x1a  0001 1010     BGT <s8>        Greater-Than
+0x1c  0001 1100     BC <s8>         Carry
+0x1d  0001 1101     BO <s8>         Overflow
+0x20  0010 0000     PSH <u8>        Stack Push
+0x24  0010 0100     POP <R>         Stack Pop
+0x28  0010 1000     ADD <R>         Add Value of <R> to A
+0x29  0010 1001     SUB <R>         SUB like Ins:0x28
+0x2a  0010 1010     ABC <R>         ADC with Carry
+0x2c  0010 1100     AND <R>         A & V(<R>)
+0x2d  0010 1101     OR <R>          A || V(<R>)
+0x2e  0010 1110     NOT             Inverts A
+0x30  0100 0000     LR <R>          Rotate A by V(<R>) bits Left
+0x31  0100 0001     RR <R>          Rotate A by V(<R>) bits Right
+0x34  0100 0100     LS <R>          Shift A by V(<R>) bits Left
+0x35  0100 0101     RS <R>          Shift A by V(<R>) bits Right
+0x38  0100 1000     TR <R1, R2>     Transfer value of <R2> to <R1>
+0x39  0100 1001     SF <v8>         Set flags
+0x3c  0100 1100     INT <u8>        Calles interrupt <u8> (defined in interrupttable)
